@@ -25,7 +25,7 @@ trading_strategy = TradingStrategy(alpaca_client, db_manager)
 # Serve static files (HTML, CSS, JS)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-@app.on_startup
+@app.on_event("startup")
 async def startup_event():
     """Initialize database and connections on startup"""
     await db_manager.initialize()
